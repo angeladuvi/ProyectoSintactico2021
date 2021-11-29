@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina principal ISI</title>
+    <body style="color: rgb(43, 43, 97); background-color: #EA899A; font-family: Georgia, Cambria, serif; font-size: 16px;"></body>
+
+    <!--style>
+        table{
+
+            width: 50%;
+
+        }
+        td{
+
+            border: 2px solid black;
+
+        }
+
+
+    </style-->
+</head>
+<body>
+    <ul>
+        <li><a href="{% url 'home1' %}">home</a></li>
+        <li><a href="{% url 'sintactico:patrones' %}">sintactico</a></li>
+        <li><a href="{% url 'about:about' %}">about</a></li>
+    </ul>
+
+   
+
+    {% block contenido %}
+     
+    {% endblock contenido %}
+
+
+    <ul>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <td>pk </td>
+                    <td>Temperatura </td>
+                    <td>Color</td>
+                    <td>Inflamacion</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                 {% for elemento in l %}
+                    <tr>
+                        <td style="border: 2px solid rgb(233, 33, 33);">{{elemento.pk}}</td>
+                        
+                        {% if elemento.temperature > 50 %}
+                        <td style="border: 2px solid  rgb(214, 36, 51);">{{elemento.temperature}}</td>
+                        
+                        {% else %}
+                        <td style="border: 2px solid  rgb(7, 0, 0)ck;">{{elemento.temperature}}</td>
+                        
+                        {% endif %}
+                            
+                        
+                        <td style="border: 2px solid rgb(19, 196, 57);">{{elemento.color}}</td>
+                        <td style="border: 2px solid rgb(186, 216, 14);">{{elemento.inflamation}}</td>
+                        
+                    </tr>
+      
+                {% endfor %}
+            </tbody>
+
+        </table>
+        
+
+    </ul>
+    
+    <hr>
+    {% block footer %}
+      <p>Inicio</p>
+    {% endblock footer %}
+</body>
+</html>
